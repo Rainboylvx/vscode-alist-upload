@@ -1,0 +1,95 @@
+{
+  "name": "alist-import",
+  "displayName": "alist upload plugin",
+  "description": "",
+  "publisher": "rainboy",
+  "version": "0.0.1",
+  "icon": "assets/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rainboylvx/alist.git"
+  },
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "bugs": {},
+  "extensionPack": [],
+  "license": "MIT",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "id": "alistploadplugin",
+        "title": "Alist Pload Plugin",
+        "properties": {
+          "alist.server.url": {
+            "type": "string",
+            "default": "这里填你的 alist 服务器地址",
+            "description": "Alist server url"
+          },
+          "alist.server.token": {
+            "type": "string",
+            "default": "这里填你的 alist 服务器 token",
+            "description": "token位置: 登录-> 管理-> 设置-> 其它-> 令牌"
+          },
+          "alist.server.upload.path": {
+            "type": "array",
+            "description": "File extension to upload path mappings.",
+            "default": [
+              [
+                ".png",
+                "/picture"
+              ],
+              [
+                ".jpg",
+                "/picture"
+              ]
+            ],
+            "items": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string",
+                  "default": ".rar",
+                  "description": "File extension (e.g., .png)"
+                },
+                {
+                  "type": "string",
+                  "default": ".assets",
+                  "description": "Upload path (e.g., /images)"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "dependencies": {
+    "axios": "^1.8.3"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/lodash": "^4.14.182",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.70.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": "^8.20.0",
+    "glob": "^8.0.3",
+    "typescript": "^4.7.4"
+  }
+}
