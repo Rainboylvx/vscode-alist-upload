@@ -44,7 +44,7 @@ class AFileNameListOnDropProvider implements vscode.DocumentDropEditProvider {
 		const texts:string[] = [];
 		for( const fileURI of uris ) {
 			const fileName = path.basename(fileURI.path);
-			const url = await alistUpload(fileURI, "/share", fileName);
+			const url = await alistUpload(fileURI,fileName);
 			const extname = path.extname(fileURI.path).toLowerCase();
 
 			if(url.length === 0)  {continue;}

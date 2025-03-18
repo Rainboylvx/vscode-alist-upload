@@ -39,33 +39,37 @@
             "default": "这里填你的 alist 服务器 token",
             "description": "token位置: 登录-> 管理-> 设置-> 其它-> 令牌"
           },
+          "alist.server.default_upload_dir": {
+            "type": "string",
+            "default": "/alist_upload",
+            "description": "默认上传路径"
+          },
           "alist.server.upload.path": {
             "type": "array",
             "description": "File extension to upload path mappings.",
             "default": [
-              [
-                ".png",
-                "/picture"
-              ],
-              [
-                ".jpg",
-                "/picture"
-              ]
+              {
+                "exts":[".png",".jpg",".jpeg",".gif",".bmp",".webp",".svg",".ico"],
+                "dir": "/pictures"
+              },
+              {
+                "exts": [".rar",".zip",".7z"],
+                "dir": "/assets"
+              }
             ],
             "items": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "string",
-                  "default": ".rar",
-                  "description": "File extension (e.g., .png)"
+              "type": "object",
+              "properties": {
+                "exts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
-                {
-                  "type": "string",
-                  "default": ".assets",
-                  "description": "Upload path (e.g., /images)"
+                "dir": {
+                  "type": "string"
                 }
-              ]
+              }
             }
           }
         }
